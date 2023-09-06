@@ -8,5 +8,6 @@
         public DateTime ReviewDate { get; set; }
         public Reviewer Reviewer { get; set; }
         public Pet Pet { get; set; }
+        public decimal Rating { get; set; }
     }
 }

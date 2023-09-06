@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PetReviewApp.Data;
+using PetReviewApp.Interfaces;
+using PetReviewApp.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<ISpecieRepository, SpecieRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PetReviewConnection"));
-});
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PetReviewConnection"))
+    );
+
 
 var app = builder.Build();
 
