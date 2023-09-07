@@ -8,7 +8,7 @@
         public string Email { get; set; }
 
         public Country Country { get; set; }
-        public ICollection<Pet> pets { get; set; }
+        public ICollection<Pet> Pets { get; set; }
 
 
     }
