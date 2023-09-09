@@ -12,6 +12,12 @@ namespace PetReviewApp.Repository
             this._context = context;
         }
 
+        public bool CreatePet(Pet pet)
+        {
+            _context.Add(pet);
+            return Save();
+        }
+
         public ICollection<Pet> GetAll()
         {
             return _context.Pets.OrderBy(p => p.Id).ToList();
@@ -39,6 +45,12 @@ namespace PetReviewApp.Repository
         public bool PetExists(int id)
         {
             return _context.Pets.Any(p => p.Id == id);
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0;
         }
     }
 }

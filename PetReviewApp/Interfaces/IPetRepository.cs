@@ -9,5 +9,8 @@ namespace PetReviewApp.Interfaces
         Pet GetPetByName(string name);
         decimal GetPetRating(int id);
         bool PetExists(int id);
+
+        bool CreatePet(Pet pet);
+        bool Save();
     }
 }
